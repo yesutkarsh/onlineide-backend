@@ -1,0 +1,15 @@
+runtime: nodejs20
+env: standard
+
+# Automatic scaling configuration to ensure at least one instance is always running
+automatic_scaling:
+  min_instances: 1
+  max_instances: 5  # You can adjust this depending on your traffic needs
+  target_cpu_utilization: 0.6
+  target_throughput_utilization: 0.6
+
+# This should be defined in case the app becomes unresponsive or overloaded
+handlers:
+  - url: /.*
+    script: auto
+    secure: always  # Ensure HTTPS is enforced for better security
