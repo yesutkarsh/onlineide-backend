@@ -27,7 +27,7 @@ router.get('/run', async function(req, res, next) {
        
 
   try {
-    const image = "yesutkarshverma/yesrepelitclone:v1.0";
+    const image = "yesutkarshverma/container:v1.0";
     const port = portfromuser || '3000';  // Default to 3000 if no port is provided
 
     // Pull the Docker image
@@ -45,11 +45,11 @@ router.get('/run', async function(req, res, next) {
       // name:"utkarsh",
       HostConfig: {
         PortBindings: {
-          '3000/tcp': [{ HostPort: port, HostIp: "0.0.0.0" }]
+          '5000/tcp': [{ HostPort: port, HostIp: "0.0.0.0" }]
         }
       },
       ExposedPorts:{
-        '3000/tcp':{}
+        '5000/tcp':{}
       }
     });
     
